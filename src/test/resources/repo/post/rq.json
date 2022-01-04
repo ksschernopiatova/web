@@ -1,0 +1,6 @@
+{
+  "name": "${name}",
+  "auto_init": true,
+  "private": true,
+  "gitignore_template": "nanoc"
+}
