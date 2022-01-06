@@ -11,9 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 public class HomePageService {
@@ -22,16 +20,11 @@ public class HomePageService {
 
     public HomePageService(WebDriver driver) {
         this.homePage = new HomePage(driver);
+    }
+
+    public void open() {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(10), "Home page was not opened");
-    }
-
-    public List<CategoryBlock> getCategoryBlocks() {
-        return homePage.getCategoryBlocks();
-    }
-
-    public Header getHeader() {
-        return homePage.getHeader();
     }
 
     public CatalogPage catalogPageClick(WebDriver driver) {
@@ -68,5 +61,13 @@ public class HomePageService {
             }
         }
         return vkLoginPage;
+    }
+
+    public List<CategoryBlock> getCategoryBlocks() {
+        return homePage.getCategoryBlocks();
+    }
+
+    public Header getHeader() {
+        return homePage.getHeader();
     }
 }

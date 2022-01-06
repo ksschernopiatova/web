@@ -12,16 +12,16 @@ import java.util.List;
 
 public class Header extends AbstractUIObject {
 
-    @FindBy(xpath = ".//*[contains(@class,'b-main-navigation__item')]/a/span")
+    @FindBy(xpath = ".//*[contains(@class,'main-navigation__item')]/a/span")
     private List<ExtendedWebElement> menu;
 
-    @FindBy(xpath = ".//input[@class='fast-search__input']")
+    @FindBy(xpath = ".//input[contains(@class,'search__input')]")
     private ExtendedWebElement searchField;
 
-    @FindBy(xpath = ".//*[@class='b-top-logo']")
+    @FindBy(xpath = ".//*[contains(@class,'top-logo')]")
     private ExtendedWebElement logo;
 
-    @FindBy(xpath = "//*[@title='ВКонтакте']")
+    @FindBy(xpath = ".//*[@title='ВКонтакте']")
     private ExtendedWebElement vkLogin;
 
     public Header(WebDriver driver, SearchContext searchContext) {

@@ -14,7 +14,7 @@ public class HomePage extends AbstractPage {
     @FindBy(className = "g-top")
     private Header header;
 
-    @FindBy(xpath = "//*[@class='b-main-page-grid-4 b-main-page-news-2']")
+    @FindBy(xpath = "//*[@class='g-middle-i']/div[contains(@class, 'main-page-news')]")
     private List<CategoryBlock> categoryBlocks;
 
     public HomePage(WebDriver driver) {

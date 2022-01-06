@@ -4,7 +4,6 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.solvd.web.components.CategoryBlock;
 import com.solvd.web.components.Header;
 import com.solvd.web.components.ProductBlock;
-import com.solvd.web.pages.CatalogPage;
 import com.solvd.web.pages.HomePage;
 import com.solvd.web.pages.SearchFrame;
 import com.solvd.web.pages.VkLoginPage;
@@ -39,6 +38,7 @@ public class OnlinerWebTest implements IAbstractTest {
     @Test(dataProvider = "categoryItems")
     public void verifyHomePageTest(List<String> categoryItems) {
         HomePageService homePageService = new HomePageService(getDriver());
+        homePageService.open();
         List<CategoryBlock> categoryBlocks = homePageService.getCategoryBlocks();
 
         SoftAssert sa = new SoftAssert();
@@ -50,10 +50,8 @@ public class OnlinerWebTest implements IAbstractTest {
 
     @Test
     public void verifyLogoClickTest() {
-        HomePageService homePageService = new HomePageService(getDriver());
-        CatalogPage catalogPage = homePageService.catalogPageClick(getDriver());
-
         CatalogPageService catalogPageService = new CatalogPageService(getDriver());
+        catalogPageService.open();
         HomePage homePage = catalogPageService.logoClick(getDriver());
         Assert.assertTrue(homePage.getHeader().isUIObjectPresent(), "Home page was not opened");
     }
@@ -69,8 +67,8 @@ public class OnlinerWebTest implements IAbstractTest {
     @Test(dataProvider = "searchTest")
     public void verifySearchTest(String text) {
         HomePageService homePageService = new HomePageService(getDriver());
+        homePageService.open();
         Header header = homePageService.getHeader();
-        Assert.assertTrue(header.isUIObjectPresent(10), "home page was not opened");
 
         header.searchType(text);
         SearchFrame searchFrame = homePageService.switchToSearchFrame(getDriver());
@@ -85,8 +83,8 @@ public class OnlinerWebTest implements IAbstractTest {
     @Test
     public void verifyVkLoginTest() {
         HomePageService homePageService = new HomePageService(getDriver());
+        homePageService.open();
         Header header = homePageService.getHeader();
-        Assert.assertTrue(header.isUIObjectPresent(10), "home page was not opened");
 
         VkLoginPage vkLoginPage = homePageService.switchToVkLoginPage(getDriver());
 
@@ -99,6 +97,7 @@ public class OnlinerWebTest implements IAbstractTest {
     @Test
     public void verifyCompareButtonTest() {
         ProductPageService productPageService = new ProductPageService(getDriver());
+        productPageService.open();
 
         Assert.assertFalse(productPageService.isComparePageButtonPresent());
         productPageService.compareCheckboxCheck();
